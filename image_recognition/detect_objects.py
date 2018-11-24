@@ -19,18 +19,17 @@ def detect_objects(img, sess):
                    feed_dict={'image_tensor:0': inp.reshape(1, inp.shape[0], inp.shape[1], 3)})
     # Visualize detected bounding boxes.
     num_detections = int(out[0][0])
-
     detected = {}
     for i in range(num_detections):
         classId = int(out[3][0][i])
         score = float(out[1][0][i])
         bbox = [float(v) for v in out[2][0][i]]
-        if score > 0.84:
+        if score > 0.3:
             x = bbox[1] * cols
             y = bbox[0] * rows
             right = bbox[3] * cols
             bottom = bbox[2] * rows
-            label = labels[i]
+            label = labels[classId]
             detected[label] = (int(x), int(y)), (int(right), int(bottom))
             # cv.rectangle(img, , (125, 255, 51), thickness=2)
     return detected

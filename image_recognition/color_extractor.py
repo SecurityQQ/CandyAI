@@ -1,6 +1,7 @@
 import numpy as np
 from utils import hex_to_3d, hex_embedding_similarity
 from clarifai.rest import Image as ClImage
+from clarifai.rest import ClarifaiApp
 import logging
 
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
@@ -8,7 +9,10 @@ logger = logging.getLogger("my_logger")
 logger.setLevel(logging.INFO)
 
 
-def predict_color(app, url):
+def predict_color(app, url, num_top=2):
+    if app is None:
+        app = ClarifaiApp(api_key='9a2117f4967a4f2d92e84adb221c5cc1')
+
     model = app.models.get("color")
 
     # predict with the model
@@ -30,15 +34,16 @@ def predict_color(app, url):
 
     colors.sort(key=lambda x: -x['prob'])
 
-    colors = colors[:min(2, len(colors))]
+    colors = colors[:min(num_top, len(colors))]
 
     logger.info("predict_color. colors are: {}".format(colors))
     return colors
 
+
 COLOR_PATTERNS = {
-    "Red": {
-        "message": "Yo, red guy!",
-        "embedding": hex_to_3d("ff0000")
+    "Yellow": {
+        "message": "Yo, yellow guy!",
+        "embedding": hex_to_3d("00ffff")
     },
     "Yellow Green Red": {
         "message": "Wassap, color guy!",
