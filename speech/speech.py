@@ -49,9 +49,9 @@ def playsound(text, name):
 def greeting(age, gender):
 
 	if (age<14 and gender=='male'):
-		playsound('Hello Little Boy, do you want some kandies?', 'en-US-Wavenet-F')
+		playsound('Hello Little Boy, do you want some candies?', 'en-US-Wavenet-F')
 	elif (age<14 and gender=='female'):
-		playsound('Hello Little Girl, do you want some kandies?', 'en-US-Wavenet-F')
+		playsound('Hello Little Girl, do you want some candies?', 'en-US-Wavenet-F')
 	elif (age<30 and gender=='male'):
 		playsound('Hi guy, if you brave enough try your lack try your luck', 'en-US-Wavenet-E')
 	elif (age<30 and gender=='female'):
@@ -60,6 +60,22 @@ def greeting(age, gender):
 		playsound('Welcome men, we have a special offer for you', 'en-US-Wavenet-A')
 	else:
 		playsound('Welcome lady, do you want to get a special offer?', 'en-US-Wavenet-A')
+
+
+def greeting_with_object(age, gender, object_name):
+
+	if (age<14 and gender=='male'):
+		playsound('Hello Little Boy with ' + object_name + ', do you want some candies?', 'en-US-Wavenet-F')
+	elif (age<14 and gender=='female'):
+		playsound('Hello Little Girl with ' + object_name + ', do you want some candies?', 'en-US-Wavenet-F')
+	elif (age<30 and gender=='male'):
+		playsound('Hi guy with ' + object_name + ', if you brave enough try your lack try your luck', 'en-US-Wavenet-E')
+	elif (age<30 and gender=='female'):
+		playsound('Hi girl with ' + object_name + ', you is as sweet as my candies, I have a personal present for you', "en-US-Wavenet-B")
+	elif (age>30 and gender=='male'):
+		playsound('Welcome men with ' + object_name + ', we have a special offer for you', 'en-US-Wavenet-A')
+	else:
+		playsound('Welcome lady with ' + object_name + ', do you want to get a special offer?', 'en-US-Wavenet-A')
 
 
 greeting(5, 'female')
