@@ -1,4 +1,5 @@
 from PIL import Image
+from datetime import datetime
 import face_recognition
 
 
@@ -29,4 +30,6 @@ def get_body(img):
     face_image = image[bottom:ny, a:b]
 
     pl_image = Image.fromarray(face_image)
-    pl_image.save("withoutface.png", dpi=(1, 1))
+    filename = str(datetime.now()) + ".png"
+    pl_image.save(filename, dpi=(1, 1))
+    return filename
