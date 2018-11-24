@@ -3,6 +3,10 @@ from utils import hex_to_3d, hex_embedding_similarity
 from clarifai.rest import Image as ClImage
 import logging
 
+logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
+logger = logging.getLogger("my_logger")
+logger.setLevel(logging.INFO)
+
 
 def predict_color(app, url):
     model = app.models.get("color")
@@ -23,7 +27,12 @@ def predict_color(app, url):
                                  },
                       colors)
                   )
-    logging.info("predict_color. colors are: {}".format(colors))
+
+    colors.sort(key=lambda x: -x['prob'])
+
+    colors = colors[:min(2, len(colors))]
+
+    logger.info("predict_color. colors are: {}".format(colors))
     return colors
 
 COLOR_PATTERNS = {
@@ -59,13 +68,15 @@ def detect_close_patter(app, url):
     embeddings = np.array([hex_to_3d(item["embedding"]) for item in colors]).T
     probs = np.array([item["prob"] for item in colors])
 
-    logging.info("embeddings: {}".format(embeddings))
-    logging.info(("probs: {}").format(probs))
+    probs = probs / np.sum(np.abs(probs))
+
+    logger.info("embeddings: {}".format(embeddings))
+    logger.info(("probs: {}").format(probs))
 
     mean_embedding = np.sum(embeddings * probs, axis=1)
 
-    logging.info("mean embedding: {}".format(mean_embedding))
-    logging.info("patterns: {}".format(COLOR_PATTERNS))
+    logger.info("mean embedding: {}".format(mean_embedding))
+    logger.info("patterns: {}".format(COLOR_PATTERNS))
     return match_embedding_with_patterns(mean_embedding, COLOR_PATTERNS)
 
 def get_message_for_user(params):
@@ -77,7 +88,7 @@ def get_message_by_picture(app, url):
     closest_patterns = detect_close_patter(app, url)
     sorted_by_score = sorted(closest_patterns.items(), key=lambda x: x[1])
 
-    logging.info("similarities: {}".format(sorted_by_score))
+    logger.info("similarities: {}".format(sorted_by_score))
     top1key = sorted_by_score[0][0]
 
     payload = {

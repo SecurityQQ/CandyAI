@@ -1,11 +1,12 @@
 from color_extractor import predict_color, detect_close_patter, get_message_by_picture
-
+from utils import smooth_image
 from clarifai.rest import ClarifaiApp
 from pprint import pprint
 import logging
 
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
-
+logger = logging.getLogger("my_logger")
+logger.setLevel(logging.INFO)
 
 app = ClarifaiApp(api_key='9a2117f4967a4f2d92e84adb221c5cc1')
 
@@ -17,7 +18,11 @@ completely_black_guy = "http://allday2.com/uploads/posts/2017-09/1505131958_foto
 girl_like_unicorn = "https://pbs.twimg.com/profile_images/432888790399856640/egikGaN6_400x400.png"
 yellow_green_guy = "http://anthocyanin1.ru/pics/781/colorsample-1.jpg"
 
+# url = "/Users/aleksandrmalysev/Yandex.Disk.localized/Developer/CandyRobot/image_recognition/withoutface.png"
+url = "/Users/aleksandrmalysev/Yandex.Disk.localized/Скриншоты/2018-11-24_18-09-40.png"
+# smooth_image(url)
 
-with open(me_in_red, "rb") as f:
-    c = get_message_by_picture(app, yellow_green_guy)
+
+with open(url, "rb") as f:
+    c = get_message_by_picture(app, f)
     print(c)
