@@ -45,7 +45,7 @@ with tf.Session() as sess:
 
         caption = str(properties['color'])
 
-        if len(properties['demography']) > 0:
+        if "demography" in properties and len(properties['demography']) > 0:
             caption += " " + str(properties["demography"])
 
         cv2.putText(frame, caption,
