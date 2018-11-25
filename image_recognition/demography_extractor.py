@@ -25,7 +25,7 @@ def extract_demography(app, url):
             result = {
                 "age": age,
                 "gender": gender,
-                multiculture: multiculture
+                "multiculture": multiculture
             }
             return result
     except KeyError as e:
