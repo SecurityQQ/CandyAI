@@ -1,6 +1,6 @@
 import testpilot
 import sys
-
+from random import randint
 from flask import Flask, jsonify, render_template, send_file
 
 
@@ -15,6 +15,10 @@ app = Flask(__name__)
 def static_page():
     return render_template('base.html')
 
+@app.route('/controlpanel')
+def controlpanel():
+    return render_template('controlpanel.html')
+
 @app.route('/createphoto', methods=['GET'])
 def createphoto():
     picture.start()
@@ -24,10 +28,19 @@ def createphoto():
 def qr_url():
     return send_file('qr.png', mimetype='image/png')
 
+@app.route('/get_random')
+def get_random():
+    testpilot.gotobasket(randint(0, 3))
+    time.sleep(10)
+    testpilot.getcandies()
+    time.sleep(10)
+    testpilot.abortcandies()
+    return 'ok'
+
 @app.route('/get_image')
 def get_image():
+    get_random()
     return send_file('mymosaic.jpg', mimetype='image/jpg')
-
 
 @app.route('/test', methods=['GET'])
 def get_tasks():

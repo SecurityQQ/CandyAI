@@ -1,6 +1,7 @@
 from google.cloud import texttospeech
 import os
 from google.oauth2 import service_account
+from random import randint
 
 credentials = service_account.Credentials.from_service_account_file("C:/Users/dyako/Downloads/moscowhack-c25932a920be.json")
 
@@ -46,6 +47,12 @@ def playsound(text, name):
 	winsound.PlaySound('output.wav', winsound.SND_ALIAS)
 
 
+phrases_men = ['Hi guy, if you brave enough try your lack to win some candies',
+	'Hi guuuuuuuuy, areeee you ready to try some sweets',
+	'Heeeeeey, whats up men, we have some candies here', 
+	"Hey! I wanna play a game with you! Yes, you. Come here! Right now!",
+	"Good morning my sweety! Would like to play a game and win some candies?"]
+
 def greeting(age, gender):
 
 	if (age<14 and gender=='male'):
@@ -53,7 +60,7 @@ def greeting(age, gender):
 	elif (age<14 and gender=='female'):
 		playsound('Hello Little Girl, do you want some candies?', 'en-US-Wavenet-F')
 	elif (age<30 and gender=='male'):
-		playsound('Hi guy, if you brave enough try your lack to win some candies', 'en-US-Wavenet-E')
+		playsound(phrases_men[randint(0, 4)], 'en-US-Wavenet-E')
 	elif (age<30 and gender=='female'):
 		playsound('Hi girl, you is as sweet as my candies, I have a personal present for you', "en-US-Wavenet-B")
 	elif (age>30 and gender=='male'):

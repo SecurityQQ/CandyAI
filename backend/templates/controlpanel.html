@@ -1,0 +1,84 @@
+<!doctype html>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+    <style type="text/css">
+  	h1 {
+  		text-align: center;
+  		margin-top: 300px;
+  	}
+  	button {
+    margin-top: 100px;
+    margin: auto;
+    display: inline-block;
+  	}
+    .buttons {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+    }
+  </style>
+  <h1>Get your Candies!</h1>
+
+
+<div class="buttons">
+  <button id="go0">Got to 0 basket</button>
+  <button id="go1">Got to 1 basket</button>
+  <button id="go2">Got to 2 basket</button>
+  <button id="go3">Got to 3 basket</button>
+  </div>
+
+<div class="buttons">
+  <button id="get">Get Candies</button>
+  <button id="fake">Fake Get Candies</button>
+</div>
+<div class="buttons">
+  <button id="abort">Abort</button>
+  <button id="goodbye">Goodbye</button>
+</div>
+  <script type="text/javascript">
+    $("#go0").click(function(){
+    $.get("http://russianhackers228.serveo.net/gotobasket/0", function(data, status){
+    });
+    });
+    $("#go1").click(function(){
+    $.get("http://russianhackers228.serveo.net/gotobasket/1", function(data, status){
+    });
+    });
+    $("#go2").click(function(){
+    $.get("http://russianhackers228.serveo.net/gotobasket/2", function(data, status){
+    });
+    });
+    $("#go3").click(function(){
+    $.get("http://russianhackers228.serveo.net/gotobasket/3", function(data, status){
+    });
+    });
+  	$("#get").click(function(){
+    $.get("http://russianhackers228.serveo.net/getcandies", function(data, status){
+    });
+    });
+    $("#fake").click(function(){
+    $.get("http://russianhackers228.serveo.net/fakecandies", function(data, status){
+    });
+    });
+    $("#abort").click(function(){
+    $.get("http://russianhackers228.serveo.net/abort", function(data, status){
+    });
+    });
+    $("#goodbye").click(function(){
+    $.get("http://russianhackers228.serveo.net/goodbye", function(data, status){
+    });
+    });
+
+  </script>
+
+
+</div>
