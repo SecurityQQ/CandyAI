@@ -24,8 +24,8 @@ def start():
 		if cv2.waitKey(1) & 0xFF == ord('q'):
 			ret, frame = cap.read()
 			imwrite("filename1.jpg",frame)
-			cap.release()
-			cv2.destroyAllWindows()
 			break
-
+	
+	cap.release()
+	cv2.destroyAllWindows()
 	import Stitcher

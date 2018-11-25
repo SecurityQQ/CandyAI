@@ -11,10 +11,13 @@ import cv2
 
 class DetectingManager:
     def __init__(self):
-        pass
+        self.N = 0
 
     def parse_frame(self, frame, detected_entities, delete_tmp_files=True):
         output = []
+        self.N += 1
+        if self.N % 4 != 0:
+            return output
         for entity_name, entity_bound in detected_entities.items():
             now = str(datetime.now().strftime('%Y-%m-%d %H-%M-%S'))
             detected_properties = defaultdict()
@@ -33,10 +36,12 @@ class DetectingManager:
                 cv2.imwrite(filename, img_slide)
 
             if entity_name == "person":
-                cutted_image_path = get_body("./" + filename)
+                # cutted_image_path = get_body("./" + filename)
                 with open(filename, "rb") as f:
-                    top_colors = detect_close_patter(None, f, DEFAULT_COLOR_PATTERNS)
-                    color = sorted(top_colors.items(), key=lambda x: x[1])[0][0]
+                    # top_colors = detect_close_patter(None, f, DEFAULT_COLOR_PATTERNS)
+                    top_colors = None
+                    color = ""
+                    # color = sorted(top_colors.items(), key=lambda x: x[1])[0][0]
                     demography = extract_demography(None, f)
 
                     detected_properties.update({

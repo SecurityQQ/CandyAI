@@ -41,32 +41,31 @@ with tf.Session() as sess:
         objects = detect_objects(frame, sess)
 
         properties = detecting_manager.parse_frame(frame, detected_entities=objects)
-        if len(properties) == 0:
-            continue
-        properties = properties[0]
-        print(properties)
+        
+        for property in properties:
+            print(property)
+            for k, v in objects.items():
+                cv2.rectangle(frame, v[0], v[1], (125, 255, 51), thickness=2)
 
+            caption = str(property.get('color'))
 
-        for k, v in objects.items():
-            cv2.rectangle(frame, v[0], v[1], (125, 255, 51), thickness=2)
+            if "demography" in property and len(property['demography']) > 0:
+                caption += " " + str(property["demography"])
+                gender="female"
+                if property["demography"]["gender"] == "masculine":
+                    gender="male"
 
-        caption = str(properties.get('color'))
+                speech.greeting(int(property["demography"]["age"]), gender)
+            if property["name"] != "person":
+                speech.greeting_with_only_object(property["name"])
 
-        if "demography" in properties and len(properties['demography']) > 0:
-            caption += " " + str(properties["demography"])
-            gender="female"
-            if properties["demography"]["gender"] == "masculine":
-                gender="male"
-
-            speech.greeting(int(properties["demography"]["age"]), gender)
-
-
-        cv2.putText(frame, caption,
-                    bottomLeftCornerOfText,
-                    font,
-                    fontScale,
-                    fontColor,
-                    lineType)
+            cv2.putText(frame, caption,
+                        bottomLeftCornerOfText,
+                        font,
+                        fontScale,
+                        fontColor,
+                        lineType)
+            cv2.imshow("frame", frame)
         cv2.imshow("frame", frame)
 
 

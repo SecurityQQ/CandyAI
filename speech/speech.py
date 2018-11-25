@@ -65,7 +65,7 @@ def greeting(age, gender):
 def greeting_with_object(age, gender, object_name):
 
 	if (age<14 and gender=='male'):
-		playsound('Hello Little Boy with ' + object_name + ', do you want some candies?', 'en-US-Wavenet-F')
+		playsound('Cool' + object_name + ', do you want some candies?', 'en-US-Wavenet-F')
 	elif (age<14 and gender=='female'):
 		playsound('Hello Little Girl with ' + object_name + ', do you want some candies?', 'en-US-Wavenet-F')
 	elif (age<30 and gender=='male'):
@@ -77,5 +77,14 @@ def greeting_with_object(age, gender, object_name):
 	else:
 		playsound('Welcome lady with ' + object_name + ', do you want to get a special offer?', 'en-US-Wavenet-A')
 
+# if __main__ == "__main__":
+# 	greeting(5, 'female')
 
-greeting(5, 'female')
+
+
+def greeting_with_only_object(object_name):
+	phrases = ["Hey! Cool {}, Let's play with Robot Arm and Candies!".format(object_name),
+				"Dude! Look at this {}. So Nice! Wanna play and win candies?".format(object_name)]
+	from random import choice
+
+	playsound(choice(phrases), 'en-US-Wavenet-F')
