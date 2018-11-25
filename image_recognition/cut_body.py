@@ -26,6 +26,11 @@ def get_body(img):
         a = left - 2 * head_size
     if right + 2 * head_size < nx:
         b = right + 2 * head_size
+    
+
+
+    if bottom<0:
+        bottom=1;
 
     face_image = image[bottom:ny, a:b]
 

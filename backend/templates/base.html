@@ -1,0 +1,35 @@
+<!doctype html>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+    <style type="text/css">
+  	h1 {
+  		text-align: center;
+  		margin-top: 300px;
+  	}
+  	button {
+  		margin-top: 100px;
+  		margin:auto;
+  		display:block;
+  	}
+  </style>
+  <h1>Get your CandyPhoto!</h1>
+
+  <button>Create</button>
+
+  <script type="text/javascript">
+  	$("button").click(function(){
+    $.get("http://localhost:5000/createphoto", function(data, status){
+        window.location.replace("http://localhost:5000/qr_url");
+    });
+	});
+  </script>
+
+
+</div>

@@ -1,9 +1,32 @@
 import testpilot
 import sys
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template, send_file
+
+
+import sys
+sys.path.insert(0, "C:\\Users\\dyako\\Documents\\CandyRobot\\picture")
+import picture
 
 app = Flask(__name__)
+
+
+@app.route('/base')
+def static_page():
+    return render_template('base.html')
+
+@app.route('/createphoto', methods=['GET'])
+def createphoto():
+    picture.start()
+    return 'wait a second'
+
+@app.route('/qr_url')
+def qr_url():
+    return send_file('qr.png', mimetype='image/png')
+
+@app.route('/get_image')
+def get_image():
+    return send_file('mymosaic.jpg', mimetype='image/jpg')
 
 
 @app.route('/test', methods=['GET'])

@@ -4,6 +4,11 @@ import tensorflow as tf
 from detect_objects import detect_objects
 from detecting_manager import DetectingManager
 
+
+import sys
+sys.path.insert(0, "C:\\Users\\dyako\\Documents\\CandyRobot\\speech")
+import speech
+
 face_cascade = cv2.CascadeClassifier("haarcascade_frontalface.xml")
 
 video = cv2.VideoCapture(0)
@@ -49,6 +54,12 @@ with tf.Session() as sess:
 
         if "demography" in properties and len(properties['demography']) > 0:
             caption += " " + str(properties["demography"])
+            gender="female"
+            if properties["demography"]["gender"] == "masculine":
+                gender="male"
+
+            speech.greeting(int(properties["demography"]["age"]), gender)
+
 
         cv2.putText(frame, caption,
                     bottomLeftCornerOfText,

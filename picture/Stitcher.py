@@ -7,8 +7,8 @@ import features
 import random
 from collections import deque
 
-INDEX_PATH = "./index/"
-IMAGES_TO_USE_PER_IMAGE = 5
+INDEX_PATH = "C:/Users/dyako/Documents/CandyRobot/picture/index/"
+IMAGES_TO_USE_PER_IMAGE = 10
 
 def readIndex():
     json_data = open(INDEX_PATH + "histogram.index").read()
@@ -79,8 +79,16 @@ def main():
         
     print ("Finished processing of image")
      
-    
+    s_img = cv2.imread("logo.png")
+    x_offset=30
+    y_offset=400
+    inputImage[y_offset:y_offset+s_img.shape[0], x_offset:x_offset+s_img.shape[1]] = s_img
+
     cv2.imwrite(str(params[4]), inputImage)
+
+    s_img = cv2.imread("logo.png")
+    x_offset=y_offset=50
+    inputImage[y_offset:y_offset+s_img.shape[0], x_offset:x_offset+s_img.shape[1]] = s_img
 
     from PIL import Image                                                                                
     img = Image.open('mymosaic.jpg')
