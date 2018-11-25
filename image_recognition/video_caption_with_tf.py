@@ -10,6 +10,14 @@ video = cv2.VideoCapture(0)
 
 detecting_manager = DetectingManager()
 
+font                   = cv2.FONT_HERSHEY_SIMPLEX
+bottomLeftCornerOfText = (10,500)
+fontScale              = 1
+fontColor              = (255,255,255)
+lineType               = 2
+
+
+
 
 with tf.gfile.FastGFile('/Users/aleksandrmalysev/Downloads/ssd_inception_v2_coco_11_06_2017/frozen_inference_graph.pb',
                         'rb') as f:
@@ -27,12 +35,25 @@ with tf.Session() as sess:
 
         objects = detect_objects(frame, sess)
 
-        detecting_manager.parse_frame(frame, detected_entities=objects)
+        properties = detecting_manager.parse_frame(frame, detected_entities=objects)
+        properties = properties[0]
+        print(properties)
 
 
         for k, v in objects.items():
             cv2.rectangle(frame, v[0], v[1], (125, 255, 51), thickness=2)
 
+        caption = str(properties['color'])
+
+        if len(properties['demography']) > 0:
+            caption += " " + str(properties["demography"])
+
+        cv2.putText(frame, caption,
+                    bottomLeftCornerOfText,
+                    font,
+                    fontScale,
+                    fontColor,
+                    lineType)
         cv2.imshow("frame", frame)
 
 
