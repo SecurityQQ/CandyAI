@@ -13,10 +13,10 @@ class DetectingManager:
     def __init__(self):
         pass
 
-    def parse_frame(self, frame, detected_entities, delete_tmp_files=False):
+    def parse_frame(self, frame, detected_entities, delete_tmp_files=True):
         output = []
         for entity_name, entity_bound in detected_entities.items():
-            now = str(datetime.now())
+            now = str(datetime.now().strftime('%Y-%m-%d %H-%M-%S'))
             detected_properties = defaultdict()
 
             detected_properties.update({
@@ -26,7 +26,7 @@ class DetectingManager:
             })
 
             filename = now + ".png"
-            with open(filename, 'wb') as f:
+            with open(filename, 'wb+') as f:
                 ((x, y), (x2, y2)) = entity_bound
                 img_slide = frame[y:y2, x:x2, :]
                 adjust_gamma(img_slide, 1.5)
@@ -56,8 +56,10 @@ class DetectingManager:
 
             if delete_tmp_files:
                 os.remove(filename)
+                '''
                 if cutted_image_path:
                     os.remove(cutted_image_path)
+                '''
 
         return output
 

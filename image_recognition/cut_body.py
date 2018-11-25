@@ -30,6 +30,6 @@ def get_body(img):
     face_image = image[bottom:ny, a:b]
 
     pl_image = Image.fromarray(face_image)
-    filename = str(datetime.now()) + ".png"
+    filename = str(datetime.now().strftime('%Y-%m-%d %H-%M-%S')) + ".png"
     pl_image.save(filename, dpi=(1, 1))
     return filename

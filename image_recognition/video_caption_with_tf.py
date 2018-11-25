@@ -19,7 +19,7 @@ lineType               = 2
 
 
 
-with tf.gfile.FastGFile('/Users/aleksandrmalysev/Downloads/ssd_inception_v2_coco_11_06_2017/frozen_inference_graph.pb',
+with tf.gfile.FastGFile('../models/frozen_inference_graph.pb',
                         'rb') as f:
     graph_def = tf.GraphDef()
     graph_def.ParseFromString(f.read())
@@ -36,6 +36,8 @@ with tf.Session() as sess:
         objects = detect_objects(frame, sess)
 
         properties = detecting_manager.parse_frame(frame, detected_entities=objects)
+        if len(properties) == 0:
+            continue
         properties = properties[0]
         print(properties)
 
@@ -43,7 +45,7 @@ with tf.Session() as sess:
         for k, v in objects.items():
             cv2.rectangle(frame, v[0], v[1], (125, 255, 51), thickness=2)
 
-        caption = str(properties['color'])
+        caption = str(properties.get('color'))
 
         if "demography" in properties and len(properties['demography']) > 0:
             caption += " " + str(properties["demography"])
