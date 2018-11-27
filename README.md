@@ -37,7 +37,7 @@ Clarify - get personal information like age, gender, unique entities (e.x. backp
 Google Text-to-Speech - pronounce personalize greeting and tinkering (for different ages and genders we use different accents)
 
 Live demo: https://youtu.be/IFU1Du42fDE
-![AI Promotion](CandyAI/imgs/attraction.png)
+![AI Promotion](CandyAI/imgs/attraction.png?raw=true)
 **Game for Android**
 
 Simple candy crash game sends requests to the robot to get candies if you get checkpoint score
