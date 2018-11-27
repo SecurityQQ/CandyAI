@@ -1,0 +1,54 @@
+candies.png
+size: 665, 101
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+7
+  rotate: false
+  xy: 7, 7
+  size: 87, 87
+  orig: 87, 87
+  offset: 0, 0
+  index: -1
+6
+  rotate: false
+  xy: 101, 7
+  size: 87, 87
+  orig: 87, 87
+  offset: 0, 0
+  index: -1
+5
+  rotate: false
+  xy: 195, 7
+  size: 87, 87
+  orig: 87, 87
+  offset: 0, 0
+  index: -1
+4
+  rotate: false
+  xy: 289, 7
+  size: 87, 87
+  orig: 87, 87
+  offset: 0, 0
+  index: -1
+3
+  rotate: false
+  xy: 383, 7
+  size: 87, 87
+  orig: 87, 87
+  offset: 0, 0
+  index: -1
+2
+  rotate: false
+  xy: 477, 7
+  size: 87, 87
+  orig: 87, 87
+  offset: 0, 0
+  index: -1
+1
+  rotate: false
+  xy: 571, 7
+  size: 87, 87
+  orig: 87, 87
+  offset: 0, 0
+  index: -1

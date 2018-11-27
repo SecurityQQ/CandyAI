@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+    <android.support.v4.widget.NestedScrollView
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".main.MainActivity">
+
+            <ImageView
+                    android:id="@+id/heart_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:src="@drawable/heart"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="16dp"
+            />
+
+            <ImageView
+                    android:id="@+id/heart_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:src="@drawable/heart"
+                    app:layout_constraintStart_toEndOf="@+id/heart_1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="8dp"
+            />
+
+            <ImageView
+                    android:id="@+id/heart_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:src="@drawable/heart"
+                    app:layout_constraintStart_toEndOf="@+id/heart_2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="8dp"
+            />
+
+            <ImageView
+                    android:id="@+id/alepa_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="64dp"
+                    android:src="@drawable/alepa_logo"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="16dp"/>
+
+
+            <ImageView
+                    android:id="@+id/gummy_bear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="56dp"
+                    android:src="@drawable/ic_gummy"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="16dp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/scoreView"
+                    android:layout_marginEnd="8dp"
+                    android:textStyle="italic"
+                    android:textSize="24sp"
+                    android:text="18"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toStartOf="@+id/gummy_bear"
+                    app:layout_constraintTop_toTopOf="@+id/gummy_bear"
+                    app:layout_constraintBottom_toBottomOf="@+id/gummy_bear"
+            />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/checkpoint"
+                    android:visibility="gone"
+                    android:layout_marginTop="20dp"/>
+
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/games_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/alepa_logo"
+                    android:layout_marginTop="24dp"
+            />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <!--<android.support.design.widget.BottomNavigationView-->
+            <!--android:id="@+id/navigation"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginEnd="0dp"-->
+            <!--android:layout_marginStart="0dp"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:layout_gravity="bottom"-->
+            <!--app:menu="@menu/navigation"/>-->
+
+</android.support.design.widget.CoordinatorLayout>
