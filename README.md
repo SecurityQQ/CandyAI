@@ -37,14 +37,14 @@ Clarify - get personal information like age, gender, unique entities (e.x. backp
 Google Text-to-Speech - pronounce personalize greeting and tinkering (for different ages and genders we use different accents)
 
 Live demo: https://youtu.be/IFU1Du42fDE
-![AI Promotion](CandyAI/imgs/attraction.png?raw=true)
+![AI Promotion](imgs/promotion.png)
 **Game for Android**
 
 Simple candy crash game sends requests to the robot to get candies if you get checkpoint score
 (https://github.com/theshadowagent/candyAI/tree/master/android)
 
 Live demo: https://youtu.be/xvgWo0OYYHk
-
+![Game Attraction](imgs/attraction.png)
 **"Candies filter"**
 
 OpenCV gets picture of user and using marked by colors library of candies pictures creates a "candy picture" 
@@ -54,7 +54,7 @@ Live demo: https://youtu.be/3LFDOJPKbvU
 ## **Our presentation**
 
 https://docs.google.com/presentation/d/1b6JV4bwsVlgIpUdn2Ahok3byx_bOyPbD2FH0jx-ld3E/
-
+![How it works](imgs/how_it_works.png)
 ## **How to run it**
 
 python backend/server.py //runs Rest API and web application to control robot (https://documenter.getpostman.com/view/1332969/RzfZQZ5r)
